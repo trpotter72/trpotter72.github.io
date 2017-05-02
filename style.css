@@ -14,7 +14,7 @@ a {
 body {
 	font-size: 100%;
 	background-color: rgba(10,10,10,.5);
-	background-image:url(bg1.jpg);
+	background-image:url(bg1.png);
 	background-position: left;
 	background-attachment: fixed;
 	background-size: cover;
