@@ -15,7 +15,7 @@ body {
 	font-size: 100%;
 	background-color: rgba(10,10,10,.5);
 	background-image:url(DeskEdit.jpg);
-	background-position: left;
+	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
 }
@@ -24,7 +24,8 @@ h1 {
 	font-family: Oswald, sans-serif;
 	text-align: center;
 	font-size: 3.125em;
-	color: rgb(200, 170, 130);
+	color: rgba(255,255,240,1);
+	text-shadow: 0 0 10px rgb(200,170,130);
 	font-variant: small-caps;
 	font-weight: 500;
 }
@@ -86,6 +87,7 @@ li {
 
 #footer_notes {
 	width:70%;
+	min-width: 660px;
 	height: 100%;
 	margin:0 auto;
 }
@@ -106,5 +108,5 @@ li {
 }
 
 .contact-bubble {
-	height: 3.5em;
+	height: 3em;
 }
