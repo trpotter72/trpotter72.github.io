@@ -104,7 +104,22 @@ li {
 }
 
 .content {
-		margin: 4em 7.5%;
+	margin: 4em 7.5%;
+}
+
+.extra-content {
+	background-color: rgb(200,170,130);
+	display: inline-block;
+	margin: 20px 30px 10px 30px;
+	width: 150px;
+	height: 50px;
+	cursor:pointer;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.extra-content h3 {
+
 }
 
 .contact-bubble {
