@@ -1,0 +1,23 @@
+h1 {
+	font-family: Oswald, sans-serif;
+	text-align: center;
+	font-size: 3.125em;
+	color: rgba(20,255,20,1);
+	text-shadow: 0 0 30px rgb(10,245,10);
+	font-variant: small-caps;
+	font-weight: 500;
+  user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}
+
+button {
+  font-family: Oswald, sans-serif;
+	text-align: center;
+	font-size: 2em;
+	color: #000000;
+	text-shadow: 0 0 10px #000000;
+	font-variant: small-caps;
+	font-weight: 500;
+}
