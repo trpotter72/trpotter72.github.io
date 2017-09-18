@@ -3,7 +3,14 @@ h1 {
 	text-align: center;
 	font-size: 3.125em;
 	color: rgba(20,255,20,1);
-	text-shadow: 0 0 30px rgb(10,245,10);
+	text-shadow: -2px -2px #000000,
+		2px 2px #000000,
+		2px -2px #000000,
+		-2px 2px #000000,
+		0px -2px #000000,
+		0px 2px #000000,
+		2px 0px #000000,
+		-2px 0px #000000;
 	font-variant: small-caps;
 	font-weight: 500;
   user-select: none;
@@ -20,4 +27,6 @@ button {
 	text-shadow: 0 0 10px #000000;
 	font-variant: small-caps;
 	font-weight: 500;
+	padding: 2px 5px 2px 5px;
+	margin: 2px 5px 2px 5px;
 }

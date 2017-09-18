@@ -14,7 +14,7 @@ a {
 body {
 	font-size: 100%;
 	background-color: rgba(10,10,10,.5);
-	background-image:url(DeskEdit.jpg);
+	background-image:url(assets/DeskEdit.jpg);
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
