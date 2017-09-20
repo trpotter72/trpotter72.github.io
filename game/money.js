@@ -29,7 +29,7 @@ let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + degree_co
 let earn_btn = $("<button></button>").text("Work Day Job $" + earn);
 
 //JQuery Graphical Variables
-let money_count = $("<h1></h1>").text("$" + 0);
+let money_count = $("<div id='money_count'></div>").text("$" + 0);
 
 
 function main() {
@@ -58,6 +58,10 @@ function main() {
 
   earn_btn.on("click", () => {
       money += earn;
+      let delta = $("<div id='delta_money'>" + earn + "</div>");
+      delta.offset({ top: money_count.offset().top, left: money_count.offset().left });
+      console.log(money_count.offset());
+      delta.appendTo(document.body);
   });
   buy_BTCminer_btn.on("click", () => {
     if (money >= BTCminer_cost) {

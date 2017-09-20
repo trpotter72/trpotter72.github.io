@@ -1,4 +1,4 @@
-h1 {
+#money_count {
 	font-family: Oswald, sans-serif;
 	text-align: center;
 	font-size: 3.125em;
@@ -38,4 +38,22 @@ ul {
 	list-style-type: none;
 	padding: 10px;
 	margin: 0px;
+}
+#delta_money {
+	animation-name: change;
+	animation-duration: 4s;
+	-webkit-animation-name: change; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+	height:50px;
+	width:50px;
+	position: absolute;
+	text-align: center;
+	background-color: #ff0000;
+}
+@keyframes change {
+	0% { opacity: 100%;}
+	100% { opacity: 0%;
+				-ms-transform: translate(0px, -100px); /* IE 9 */
+     		-webkit-transform: translate(0px, -100px); /* Safari */
+     		transform: translate(0px, -100px);}
 }
