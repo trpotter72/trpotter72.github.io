@@ -17,22 +17,24 @@ const BTCminer_earnings = 1;
 //******************************************************************************
 
 //JQuery diagnostics variables
-let d_degree_cost = $("<p></p>");
-let d_money = $("<p></p>");
-let d_earn = $("<p></p>");
-let d_BTCminers = $("<p></p>");
-let d_BTCminer_cost = $("<p></p>");
+let d_degree_cost = $("<li>");
+let d_money = $("<li>");
+let d_earn = $("<li>");
+let d_BTCminers = $("<li>");
+let d_BTCminer_cost = $("<li>");
 
 //JQuery Buttons
 let upgrade_btn = $("<button></button>").text("Earn a Degree $" + degree_cost);
 let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + degree_cost);
 let earn_btn = $("<button></button>").text("Work Day Job $" + earn);
+
+//JQuery Graphical Variables
 let money_count = $("<h1></h1>").text("$" + 0);
 
 
 function main() {
   let doc = $("document");
-  let diagnostics = $("<div></div>").css({
+  let diagnostics = $("<ul></ul>").css({
     "position":"fixed",
     "bottom":"10px",
     "right":"10px",
@@ -46,9 +48,7 @@ function main() {
     "align":"center",
     "text-align":
     "center" });
-  diagnostics.html("<ul id='stats'></ul>");
-    diagnostics.append(d_degree_cost, d_money, d_earn);
-
+  diagnostics.html("<div></div>");
   upgrade_btn.on("click", ()=>  {
     if (money >= degree_cost) {
       money -= degree_cost;
@@ -103,17 +103,21 @@ function main() {
   button_holder.append(upgrade_btn);
   button_holder.append(buy_BTCminer_btn);
   $("body").append(diagnostics);
+  diagnostics.append("<li><h3>Diagnostics:</h3></li>",d_degree_cost,d_money, d_earn, d_BTCminers, d_BTCminer_cost);
   setInterval(()=> {
-    update_screen();
-    update_money();
+    introduceNewElements();
+    updateValuesShown();
+    updateMoney();
   }, update_rate);
 
 }
 
-function update_screen() {
+function updateValuesShown() {
   d_degree_cost.text("degree_cost: " + degree_cost);
   d_money.text("money: " + money.toFixed());
   d_earn.text("earn: " + earn);
+  d_BTCminers.text("BTCminers: " + BTCminers);
+  d_BTCminer_cost.text("BTCminer_cost: " + BTCminer_cost);
 
   money_count.text("$" + money.toFixed());
   upgrade_btn.text("Earn a Degree: $" + degree_cost);
@@ -121,11 +125,20 @@ function update_screen() {
   buy_BTCminer_btn.text("Buy BTC Miner: $" + BTCminer_cost);
 }
 
-function update_money() {
+function updateMoney() {
   let sum = 0;
-  sum += BTCminers*BTCminer_earnings*update_rate/1000
+  sum += BTCminers*BTCminer_earnings*update_rate/1000;
 
   money+= sum;
+}
+
+
+//******************************************************************************
+//  Check for new
+//******************************************************************************
+function introduceNewElements()
+{
+
 }
 
 $("document").ready( () => {

@@ -18,7 +18,10 @@ h1 {
   -khtml-user-select: none;
   -webkit-user-select: none;
 }
-
+h3 {
+	padding: 0px;
+	margin:0px;
+}
 button {
   font-family: Oswald, sans-serif;
 	text-align: center;
@@ -29,4 +32,10 @@ button {
 	font-weight: 500;
 	padding: 2px 5px 2px 5px;
 	margin: 2px 5px 2px 5px;
+}
+
+ul {
+	list-style-type: none;
+	padding: 10px;
+	margin: 0px;
 }
