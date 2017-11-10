@@ -9,11 +9,12 @@ let degree_cost = 10;
 let earn = 1;
 let BTCminers = 0;
 let BTCminer_cost = 10;
+let upgrade_BTCminer_cost = 100;
+let BTCminer_earnings = 1;
 
 //Constants
 const update_rate = 100;
-const BTCminer_earnings = 1;
-const programming_time = 6;
+const programming_time = 7;
 
 //******************************************************************************
 //  Declaring JQuery objects
@@ -28,12 +29,15 @@ let d_BTCminers = $("<li>");
 let d_BTCminer_cost = $("<li>");
 let d_time_programming = $("<li>");
 
+let upgrade_BTCminer_shown = false;
 
 //JQuery Buttons
 let button_holder = $("<div id='button_holder'></div>")
 let upgrade_btn = $("<button></button>").text("Earn a Degree $" + degree_cost);
-let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + degree_cost);
+let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + BTCminer_cost);
+let upgrade_BTCminer_btn = $("<button></button>").text("Upgrade BTC miner $" + upgrade_BTCminer_cost);
 let earn_btn = $("<button></button>").text("Work Day Job $" + earn);
+
 
 //JQuery Graphical Variables
 let money_count = $("<div id='money_count'></div>");
@@ -52,6 +56,8 @@ $("document").ready( () => {
   button_holder.append(earn_btn);
   button_holder.append(upgrade_btn);
   button_holder.append(buy_BTCminer_btn);
+  button_holder.append(upgrade_BTCminer_btn);
+  upgrade_BTCminer_btn.hide();
   $("body").append(diagnostics);
   diagnostics.append("<li><h3>Diagnostics:</h3></li>",
     d_degree_cost,
@@ -70,36 +76,70 @@ $("document").ready( () => {
 function main() {
   let doc = $("document");
 
-  upgrade_btn.on("click", ()=>  {
-    if (money >= degree_cost) {
-      money -= degree_cost;
-      delta_money(-1 * degree_cost);
-      degree_cost *= 2;
-      earn *= 2;
-    }});
+  upgrade_btn.on("click", upgrade );
 
-  earn_btn.on("click", () => {
-      money += earn;
-      delta_money(earn);
-  });
-  buy_BTCminer_btn.on("click", () => {
-    if (money >= BTCminer_cost) {
-      money -= BTCminer_cost;
-      delta_money(-1 * BTCminer_cost);
-      BTCminer_cost *= 2;
-      BTCminers += 1;
-    }
-  })
+  earn_btn.on("click", work);
+
+  buy_BTCminer_btn.on("click", buy_BTCminer);
+
+  upgrade_BTCminer_btn.on("click", upgrade_BTCminer);
+
   money_value.on('click', change_money_color);
 
   setInterval(()=> {
     introduceNewElements();
     updateValuesShown();
-    updateMoney();
   }, update_rate);
 
+  setInterval(()=> {
+    updateMoney();
+  }, 1000);
 }
 
+//******************************************************************************
+//  Supporting Functions for Buttons
+//******************************************************************************
+function upgrade() {
+    if (money >= degree_cost) {
+      money -= degree_cost;
+      delta_money(-1 * degree_cost);
+      degree_cost *= 3;
+      earn *= 2;
+    }
+    else {
+      //TODOnotice("Not enough money");
+    }
+}
+
+function work() {
+    money += earn;
+    delta_money(earn);
+}
+
+function buy_BTCminer() {
+  if (money >= BTCminer_cost) {
+    money -= BTCminer_cost;
+    delta_money(-1 * BTCminer_cost);
+    BTCminer_cost = Math.floor(BTCminer_cost * Math.log10(BTCminer_cost)) + 1;
+    BTCminers += 1;
+  }
+  else {
+    //TODOnotice("Not enough money");
+  }
+}
+
+function upgrade_BTCminer() {
+  if (money >= upgrade_BTCminer_cost) {
+    money -= upgrade_BTCminer_cost;
+    delta_money(-1 * upgrade_BTCminer_cost);
+    upgrade_BTCminer_cost = Math.floor(Math.pow(10, Math.log10(upgrade_BTCminer_cost) + .5));
+    BTCminer_earnings += 1;
+  }
+  else {
+    //TODOnotice("Not enough money");
+  }
+
+}
 
 //******************************************************************************
 //  Run every tick to refresh the values of all on screen displays
@@ -116,6 +156,8 @@ function updateValuesShown() {
   upgrade_btn.text("Earn a Degree: $" + degree_cost);
   earn_btn.text("Work Day Job: $" + earn);
   buy_BTCminer_btn.text("Buy BTC Miner: $" + BTCminer_cost);
+  upgrade_BTCminer_btn.text("Upgrade BTC miner $" + upgrade_BTCminer_cost);
+
 }
 
 
@@ -124,8 +166,11 @@ function updateValuesShown() {
 //******************************************************************************
 function updateMoney() {
   let sum = 0;
-  sum += BTCminers*BTCminer_earnings*update_rate/1000;
+  sum += BTCminers*BTCminer_earnings;
   money+= sum;
+  if (sum > 0) {
+    delta_money(sum);
+  }
 }
 
 
@@ -134,7 +179,10 @@ function updateMoney() {
 //******************************************************************************
 function introduceNewElements()
 {
-
+  if (!upgrade_BTCminer_shown && BTCminers > 10) {
+    upgrade_BTCminer_btn.show();
+    upgrade_BTCminer_shown = true;
+  }
 }
 
 
@@ -148,9 +196,9 @@ function delta_money(change) {
   }
   delta.appendTo(money_count);
   setTimeout(() => {
-    console.log("Tried to remove");
     delta.remove();
   }, 3500);
+  money_value.text("$" + money.toFixed());
 }
 
 
