@@ -9,7 +9,7 @@ let degree_cost = 10;
 let earn = 1;
 let BTCminers = 0;
 let BTCminer_cost = 10;
-let upgrade_BTCminer_cost = 100;
+let BTCminer_upgrade_cost = 100;
 let BTCminer_earnings = 1;
 
 //Constants
@@ -27,7 +27,10 @@ let d_money = $("<li>");
 let d_earn = $("<li>");
 let d_BTCminers = $("<li>");
 let d_BTCminer_cost = $("<li>");
+let d_BTCminer_earnings = $("<li>");
+let d_BTCminer_upgrade_cost = $("<li>");
 let d_time_programming = $("<li>");
+
 
 let upgrade_BTCminer_shown = false;
 
@@ -35,7 +38,7 @@ let upgrade_BTCminer_shown = false;
 let button_holder = $("<div id='button_holder'></div>")
 let upgrade_btn = $("<button></button>").text("Earn a Degree $" + degree_cost);
 let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + BTCminer_cost);
-let upgrade_BTCminer_btn = $("<button></button>").text("Upgrade BTC miner $" + upgrade_BTCminer_cost);
+let upgrade_BTCminer_btn = $("<button></button>").text("Upgrade BTC miner $" + BTCminer_upgrade_cost);
 let earn_btn = $("<button></button>").text("Work Day Job $" + earn);
 
 
@@ -65,9 +68,23 @@ $("document").ready( () => {
     d_earn,
     d_BTCminers,
     d_BTCminer_cost,
+    d_BTCminer_earnings,
+    d_BTCminer_upgrade_cost,
     d_time_programming);
 
   main();});
+
+
+//******************************************************************************
+//  Creates the looping audio along side controls
+//******************************************************************************
+let audio = document.createElement("audio");
+audio.setAttribute("src", "./song.mp3");
+audio.play();
+//TODO: Create mute button for game, make sure that it loops
+
+//Looping functionallity
+audio.addEventListener('ended', ()=>{this.play();})
 
 //******************************************************************************
 //  Inits some event listeners and some other junk rn that I'll clean up
@@ -120,7 +137,7 @@ function buy_BTCminer() {
   if (money >= BTCminer_cost) {
     money -= BTCminer_cost;
     delta_money(-1 * BTCminer_cost);
-    BTCminer_cost = Math.floor(BTCminer_cost * Math.log10(BTCminer_cost)) + 1;
+    BTCminer_cost = Math.floor(BTCminer_cost * 1.2) + 1;
     BTCminers += 1;
   }
   else {
@@ -129,11 +146,11 @@ function buy_BTCminer() {
 }
 
 function upgrade_BTCminer() {
-  if (money >= upgrade_BTCminer_cost) {
-    money -= upgrade_BTCminer_cost;
-    delta_money(-1 * upgrade_BTCminer_cost);
-    upgrade_BTCminer_cost = Math.floor(Math.pow(10, Math.log10(upgrade_BTCminer_cost) + .5));
-    BTCminer_earnings += 1;
+  if (money >= BTCminer_upgrade_cost) {
+    money -= BTCminer_upgrade_cost;
+    delta_money(-1 * BTCminer_upgrade_cost);
+    BTCminer_upgrade_cost = Math.floor(Math.pow(10, Math.log10(BTCminer_upgrade_cost) + .5));
+    BTCminer_earnings *= 2;
   }
   else {
     //TODOnotice("Not enough money");
@@ -150,13 +167,15 @@ function updateValuesShown() {
   d_earn.text("earn: " + earn);
   d_BTCminers.text("BTCminers: " + BTCminers);
   d_BTCminer_cost.text("BTCminer_cost: " + BTCminer_cost);
+  d_BTCminer_earnings.text("BTCminer_earnings: " + BTCminer_earnings);
+  d_BTCminer_upgrade_cost.text("BTCminer_upgrade_cost: " + BTCminer_upgrade_cost);
   d_time_programming.text("Time programming: " + programming_time + " hours");
 
   money_value.text("$" + money.toFixed());
   upgrade_btn.text("Earn a Degree: $" + degree_cost);
   earn_btn.text("Work Day Job: $" + earn);
   buy_BTCminer_btn.text("Buy BTC Miner: $" + BTCminer_cost);
-  upgrade_BTCminer_btn.text("Upgrade BTC miner $" + upgrade_BTCminer_cost);
+  upgrade_BTCminer_btn.text("Upgrade BTC miner $" + BTCminer_upgrade_cost);
 
 }
 
