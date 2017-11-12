@@ -89,7 +89,6 @@ let currentSong = 0;
 audio.setAttribute("src", songList[currentSong]);
 //audio.loop = true;
 //audio.currentTime = 430;
-audio.play();
 //TODO: Create mute button for game, make sure that it loops
 
 //Switiching functionallity
@@ -106,7 +105,7 @@ audio.addEventListener('ended', ()=>{
 
 function main() {
   let doc = $("document");
-
+  audio.play();
   buttonInit();
 
   setInterval(()=> {
