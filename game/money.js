@@ -84,7 +84,7 @@ $("document").ready( () => {
 //  Creates the looping audio along side controls
 //******************************************************************************
 let audio = document.createElement("audio");
-let songList = ["./song.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
+let songList = ["./song1.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
 let currentSong = 0;
 audio.setAttribute("src", songList[currentSong]);
 //audio.loop = true;
