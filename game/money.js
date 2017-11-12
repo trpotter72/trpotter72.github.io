@@ -1,7 +1,17 @@
+/*---TODO---*/
+//  Keyboard integration
+//  Counts on upgrades and assets
+//  Mute button for audio
+//  Total Click counter
+//  Create an education level based on education upgrades
+//  Credits
+//  Add limited time double earnings
+//  Achievements
+//  Saves?
+//
 //******************************************************************************
 //  Declaring Global Variables to keep track of game state
 //******************************************************************************
-
 let money = 0;
 let degree_cost = 10;
 let earn = 1;
@@ -12,7 +22,7 @@ let BTCminer_earnings = 1;
 
 //Constants
 const update_rate = 100;
-const programming_time = 7;
+const programming_time = 10;
 
 //******************************************************************************
 //  Declaring JQuery objects
@@ -36,10 +46,10 @@ let notification_showing = false;
 
 //JQuery Buttons
 let button_holder = $("<div id='button_holder'></div>")
-let upgrade_btn = $("<button></button>").text("Earn a Degree $" + degree_cost);
-let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner $" + BTCminer_cost);
-let upgrade_BTCminer_btn = $("<button></button>").text("Upgrade BTC miner $" + BTCminer_upgrade_cost);
-let earn_btn = $("<button></button>").text("Work Day Job $" + earn);
+let upgrade_btn = $("<button></button>").text("Earn a Degree " + numTo$(degree_cost));
+let buy_BTCminer_btn = $("<button></button>").text("Buy BTC miner " + numTo$(BTCminer_cost));
+let upgrade_BTCminer_btn = $("<button></button>").text("Upgrade BTC miner " + numTo$(BTCminer_upgrade_cost));
+let earn_btn = $("<button></button>").text("Work Day Job " + numTo$(earn));
 
 
 //JQuery Graphical Variables
@@ -171,11 +181,11 @@ function updateValuesShown() {
   d_BTCminer_upgrade_cost.text("BTCminer_upgrade_cost: " + BTCminer_upgrade_cost);
   d_time_programming.text("Time programming: " + programming_time + " hours");
 
-  money_value.text("$" + money.toFixed());
-  upgrade_btn.text("Earn a Degree: $" + degree_cost);
-  earn_btn.text("Work Day Job: $" + earn);
-  buy_BTCminer_btn.text("Buy BTC Miner: $" + BTCminer_cost);
-  upgrade_BTCminer_btn.text("Upgrade BTC miner $" + BTCminer_upgrade_cost);
+  money_value.text(numTo$(money.toFixed()));
+  upgrade_btn.text("Earn a Degree: " + numTo$(degree_cost));
+  earn_btn.text("Work Day Job: " + numTo$(earn));
+  buy_BTCminer_btn.text("Buy BTC Miner: " + numTo$(BTCminer_cost));
+  upgrade_BTCminer_btn.text("Upgrade BTC miner " + numTo$(BTCminer_upgrade_cost));
 
 }
 
@@ -210,7 +220,7 @@ function introduceNewElements()
 function numTo$(amount){
   //Handles the case of a < $1000 value, some redundency right now
   if(Math.abs(amount) < 1000){
-    if (amount > 0){  return "$" + amount;}
+    if (amount >= 0){  return "$" + amount;}
     else {return "-$" + Math.abs(amount);}
   }
   let postfixList = [' ','K','M','B','T','Q'];
@@ -220,9 +230,8 @@ function numTo$(amount){
     postfix += 1;
     amount /= 1000;
   }
-  amount = amount.toFixed(1);
-  if (amount > 0){  return "$" + amount + postfixList[postfix];}
-  else {return "-$" + Math.abs(amount) + postfixList[postfix];}
+  if (amount > 0){  return "$" + amount.toFixed(1) + postfixList[postfix];}
+  else {return "-$" + Math.abs(amount).toFixed(1) + postfixList[postfix];}
 }
 
 //******************************************************************************
@@ -237,7 +246,7 @@ function delta_money(change) {
   setTimeout(() => {
     delta.remove();
   }, 3500);
-  money_value.text("$" + money.toFixed());
+  money_value.text(numTo$(money.toFixed()));
 }
 
 
