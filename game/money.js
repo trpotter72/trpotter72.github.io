@@ -1,5 +1,3 @@
-
-
 //******************************************************************************
 //  Declaring Global Variables to keep track of game state
 //******************************************************************************
@@ -33,6 +31,8 @@ let d_time_programming = $("<li>");
 
 
 let upgrade_BTCminer_shown = false;
+let notification_showing = false;
+
 
 //JQuery Buttons
 let button_holder = $("<div id='button_holder'></div>")
@@ -124,7 +124,7 @@ function upgrade() {
       earn *= 2;
     }
     else {
-      //TODOnotice("Not enough money");
+      notification("Not enough money");
     }
 }
 
@@ -141,7 +141,7 @@ function buy_BTCminer() {
     BTCminers += 1;
   }
   else {
-    //TODOnotice("Not enough money");
+    notification("Not enough money");
   }
 }
 
@@ -153,7 +153,7 @@ function upgrade_BTCminer() {
     BTCminer_earnings *= 2;
   }
   else {
-    //TODOnotice("Not enough money");
+    notification("Not enough money");
   }
 
 }
@@ -204,12 +204,32 @@ function introduceNewElements()
   }
 }
 
+//******************************************************************************
+//  Helper Functions
+//******************************************************************************
+function numTo$(amount){
+  //Handles the case of a < $1000 value, some redundency right now
+  if(Math.abs(amount) < 1000){
+    if (amount > 0){  return "$" + amount;}
+    else {return "-$" + Math.abs(amount);}
+  }
+  let postfixList = [' ','K','M','B','T','Q'];
+  let postfix = 0;
+  while ((Math.abs(amount / 1000) > 1) && (postfix < postfixList.length))
+  {
+    postfix += 1;
+    amount /= 1000;
+  }
+  amount = amount.toFixed(1);
+  if (amount > 0){  return "$" + amount + postfixList[postfix];}
+  else {return "-$" + Math.abs(amount) + postfixList[postfix];}
+}
 
 //******************************************************************************
 //  Responsible for displaying the floating away digits (input with correct sign pls)
 //******************************************************************************
 function delta_money(change) {
-  let delta = $("<span id='delta_money'>" + change + "</span>");
+  let delta = $("<span id='delta_money'>" + numTo$(change) + "</span>");
   if (change < 0) {
     delta.css("color", "#ff0000");
   }
@@ -220,6 +240,22 @@ function delta_money(change) {
   money_value.text("$" + money.toFixed());
 }
 
+
+//******************************************************************************
+//  Create notifications with given color
+//******************************************************************************
+function notification(message, color = "#ff0000"){
+  if(!notification_showing){
+    let notification = $("<span id='notification'>" + message + "</span>");
+    notification.css("color", color);
+    notification.appendTo($("body"));
+    notification_showing = true;
+    setTimeout(() => {
+      notification.remove();
+      notification_showing = false;
+    }, 1500);
+  }
+}
 
 //******************************************************************************
 //  Changes the color and glow of your wealth randomly
