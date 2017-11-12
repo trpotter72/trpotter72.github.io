@@ -1,5 +1,5 @@
 /*---TODO---*/
-//  Keyboard integration
+//  Keyboard integration (buttons/ diagnostics/ cheats)
 //  Counts on upgrades and assets
 //  Mute button for audio
 //  Total Click counter
