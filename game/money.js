@@ -88,7 +88,7 @@ let songList = ["./song1.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
 let currentSong = 0;
 audio.setAttribute("src", songList[currentSong]);
 //audio.loop = true;
-audio.currentTime = 430;
+//audio.currentTime = 430;
 audio.play();
 //TODO: Create mute button for game, make sure that it loops
 
