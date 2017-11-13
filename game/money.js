@@ -22,7 +22,7 @@ let BTCminer_earnings = 1;
 
 //Constants
 const update_rate = 100;
-const programming_time = 12;
+const programming_time = 13;
 
 //******************************************************************************
 //  Declaring JQuery objects
@@ -163,10 +163,12 @@ function upgrade_BTCminer() {
 //******************************************************************************
 // AUDIO: Creates the looping audio along side controls
 //******************************************************************************
-function audioInit() {
+
 let audio = document.createElement("audio");
 let songList = ["./song1.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
 let currentSong = 0;
+
+function audioInit() {
 audio.setAttribute("src", songList[currentSong]);
 audio.play();
 //Switiching functionallity
