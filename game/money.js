@@ -81,32 +81,13 @@ $("document").ready( () => {
 
 
 //******************************************************************************
-//  Creates the looping audio along side controls
-//******************************************************************************
-let audio = document.createElement("audio");
-let songList = ["./song1.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
-let currentSong = 0;
-audio.setAttribute("src", songList[currentSong]);
-//audio.loop = true;
-//audio.currentTime = 430;
-//TODO: Create mute button for game, make sure that it loops
-
-//Switiching functionallity
-audio.addEventListener('ended', ()=>{
-  audio.setAttribute("src", songList[(currentSong + 1) % songList.length]);
-  currentSong += 1;
-  console.log("Now playing " + songList[(currentSong + 1) % songList.length]);
-  audio.load();
-  audio.play();})
-
-//******************************************************************************
 //  Inits some event listeners and some other junk rn that I'll clean up
 //******************************************************************************
 
 function main() {
   let doc = $("document");
-  audio.play();
   buttonInit();
+  audioInit();
 
   setInterval(()=> {
     introduceNewElements();
@@ -117,6 +98,7 @@ function main() {
     updateMoney();
   }, 1000);
 }
+
 
 //******************************************************************************
 //  Supporting Functions for Buttons
@@ -176,6 +158,28 @@ function upgrade_BTCminer() {
     notification("Not enough money");
   }
 }
+
+
+//******************************************************************************
+// AUDIO: Creates the looping audio along side controls
+//******************************************************************************
+function audioInit() {
+let audio = document.createElement("audio");
+let songList = ["./song1.mp3", "./song2.mp3", "./song3.mp3", "./song4.mp3"];
+let currentSong = 0;
+audio.setAttribute("src", songList[currentSong]);
+audio.play();
+//Switiching functionallity
+audio.addEventListener('ended', ()=>{
+  audio.setAttribute("src", songList[(currentSong + 1) % songList.length]);
+  currentSong += 1;
+  console.log("Now playing " + songList[(currentSong + 1) % songList.length]);
+  audio.load();
+  audio.play();})
+
+//TODO: Create mute button for game, make sure that it loops
+}
+
 
 //******************************************************************************
 //  UPDATE: functions which are called periodically to change/ learn about game
