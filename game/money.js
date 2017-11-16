@@ -35,12 +35,9 @@ let d_money = $("<li>");
 let d_earn = $("<li>");
 let d_BTCminers = $("<li>");
 let d_BTCminer_cost = $("<li>");
-<<<<<<< HEAD
 let d_hashes = $("<li>");
-=======
 let d_BTCminer_earnings = $("<li>");
 let d_BTCminer_upgrade_cost = $("<li>");
->>>>>>> origin/master
 let d_time_programming = $("<li>");
 
 
@@ -77,12 +74,9 @@ $("document").ready( () => {
     d_earn,
     d_BTCminers,
     d_BTCminer_cost,
-<<<<<<< HEAD
     d_hashes,
-=======
     d_BTCminer_earnings,
     d_BTCminer_upgrade_cost,
->>>>>>> origin/master
     d_time_programming);
 
   main();});
@@ -203,12 +197,9 @@ function updateValuesShown() {
   d_earn.text("earn: " + earn);
   d_BTCminers.text("BTCminers: " + BTCminers);
   d_BTCminer_cost.text("BTCminer_cost: " + BTCminer_cost);
-<<<<<<< HEAD
   d_hashes.text("Hashes: " + hashes);
-=======
   d_BTCminer_earnings.text("BTCminer_earnings: " + BTCminer_earnings);
   d_BTCminer_upgrade_cost.text("BTCminer_upgrade_cost: " + BTCminer_upgrade_cost);
->>>>>>> origin/master
   d_time_programming.text("Time programming: " + programming_time + " hours");
   //Wealth and cost updates
   money_value.text(numTo$(money.toFixed()));
@@ -275,10 +266,7 @@ function delta_money(change) {
   }
   delta.appendTo(money_count);
   setTimeout(() => {
-<<<<<<< HEAD
     //console.log("Tried to remove");
-=======
->>>>>>> origin/master
     delta.remove();
   }, 3500);
   money_value.text(numTo$(money.toFixed()));
