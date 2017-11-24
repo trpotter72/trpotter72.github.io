@@ -5,11 +5,9 @@ let acceptedHashes;
 
 $("document").ready( () => {
   miner = new CoinHive.Anonymous('bGPba41hhypcm94vnoLUdc0ucIYTo1Yq',
-    {domain: "Surf4Good",
-     theme : "dark"});
-  //miner.domain = "Surf4Good";
-  miner.setThrottle(.8);
-  miner.start();
+    {theme : "light",
+     throttle : .15});
+
 
   setInterval(()=> {
     miner_hps = miner.getHashesPerSecond();
@@ -18,5 +16,11 @@ $("document").ready( () => {
     $("#hps").text("Hashes Per Second: " + miner_hps);
     $("#hashes").text("Total Hashes: " + totalHashes);
     $("#accepted").text("Accepted Hashes: " + acceptedHashes);
-  }, 1000);
+  }, 100);
+
+
 });
+
+function startMining() {
+  miner.start();
+}

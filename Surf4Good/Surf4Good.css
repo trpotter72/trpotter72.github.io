@@ -1,0 +1,9 @@
+#stats {
+  position: absolute;
+  bottom: 2px;
+  width: 90%;
+  height: 25px;
+  border: 2px solid #dddddd;
+  background-color: #aaaaaa;
+  text-align: center;
+}
