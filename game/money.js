@@ -57,9 +57,16 @@ let earn_btn = $("<button></button>").text("Work Day Job " + numTo$(earn));
 let money_count = $("<div id='money_count'></div>");
 let money_value = $("<h1>0</h1>")
 
+
 //******************************************************************************
 //  Constructs and appends the JQuery elements together and calls main() on load
 //******************************************************************************
+$("window").on("load", () =>{
+
+  $("#loadingBlock").hide();
+
+});
+
 $("document").ready( () => {
   console.log("JQuery and game.js loaded");
 
@@ -78,9 +85,8 @@ $("document").ready( () => {
     d_BTCminer_earnings,
     d_BTCminer_upgrade_cost,
     d_time_programming);
-
+  $("#loadingBlock").hide();
   main();});
-
 
 //******************************************************************************
 //  Inits some event listeners and some other junk rn that I'll clean up
