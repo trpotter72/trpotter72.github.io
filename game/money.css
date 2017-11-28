@@ -166,10 +166,13 @@ ul {
 }
 
 #loadingBlock {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	height: 100%;
 	background-color: #ff000088;
+	padding: auto auto auto auto;
+	text-align: center;
+	vertical-align: middle;
 
 }
 

