@@ -61,15 +61,11 @@ let money_value = $("<h1>0</h1>")
 //******************************************************************************
 //  Constructs and appends the JQuery elements together and calls main() on load
 //******************************************************************************
-$("window").on("load", () =>{
 
-  $("#loadingBlock").hide();
-
-});
 
 $("document").ready( () => {
   console.log("JQuery and game.js loaded");
-  $("#loadingBlock").hide();
+
   $("body").append(money_count);
     money_count.append(money_value);
   $("body").append("<br/>");
@@ -85,7 +81,7 @@ $("document").ready( () => {
     d_BTCminer_earnings,
     d_BTCminer_upgrade_cost,
     d_time_programming);
-
+  $("#loadingBlock").hide();
   main();});
 
 //******************************************************************************
