@@ -1,0 +1,10 @@
+{
+  "manifest_version" : 2,
+  "name" : "Surf 4 Good",
+  "version" : "0.1",
+  "description": "Mines Monero coin with excess computing power for charity of the user's choice",
+  "background" : {"persistent": true, "scripts" : ["coinhive.js", "mining.js"] },
+  "browser_action" : {  "page": "background.html", "default_icon" : "icon.png" },
+  "content_security_policy": "script-src 'self' https://coinhive.com; object-src 'self'"
+
+}
