@@ -1,0 +1,267 @@
+body,
+html {
+		margin: 0;
+		height:100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
+		font-family: 'Quicksand', sans-serif;
+}
+
+a,
+a:visited {
+	color: #8e8989;
+}
+
+a:hover {
+	color: #565656;
+}
+
+.container {
+		display: grid;
+		position: relative;
+		overflow: hidden;
+		width: 100vw;
+		height: 100%;
+		background-image: url(Background.jpg);
+		background-size: cover;
+		background-position-x: center;
+		grid-template-columns: 1fr;
+		grid-template-rows: 60vh 40vh;
+}
+
+.header {
+		text-align: center;
+		color: grey;
+}
+
+#carousel {
+		position: relative;
+		z-index: 1;
+		overflow-x: scroll;
+		white-space: nowrap;
+		padding: 40px 50vw 0;
+		overflow: -moz-scrollbars-none;
+}
+
+#carousel::-webkit-scrollbar {
+		display: none;
+}
+
+.carousel-item,
+.carousel-item-mob {
+		display: inline-flex;
+		background: white;
+		border-radius: 10px;
+		width: auto;
+		height: 90%;
+		margin: 10px 15px;
+		position: relative;
+		transition: all 0.5s ease;
+		text-align: center;
+		top:0;
+		width: 300px;
+		opacity: 0.6;
+		transition: all 0.25s ease-in-out;
+}
+
+.carousel-item:not(.selected) {
+	cursor: pointer;
+}
+
+.carousel-item.selected {
+	margin: 15px 215px 0 215px;
+	opacity: 1;
+	box-shadow:  0 5px 20px 0px rgba(82, 82, 82, 0.5);
+}
+
+.center {
+		width: 300px;
+		z-index: 10;
+}
+
+.carousel-item.selected {
+		border-radius: 0px;
+}
+
+.carousel-item .left,
+.carousel-item .right {
+		width: 200px;
+		transition: all 0.5s ease-out;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		height: 100%;
+		background: white;
+		left:0px;
+		opacity: 0;
+}
+
+.carousel-item .left {
+	border-radius: 10px 0 0 10px;
+}
+
+.carousel-item .right {
+	border-radius: 0px 10px 10px 0px;
+}
+
+.carousel-item.selected .left {
+	left: -199px;
+	opacity: 1;
+}
+
+.carousel-item.selected .right {
+	left: 299px;
+	opacity: 1;
+}
+
+.carousel-item .left p {
+	max-width: 80%;
+	white-space: normal;
+}
+
+.dev-icons {
+		font-size: 1.5em;
+}
+
+.dev-icons i {
+		color: #dda77d !important;
+		margin: 0 5px;
+}
+
+.dev-icons .second-row {
+		margin-top: 5px;
+}
+
+.project-img {
+		max-width: 70%;
+		max-height: 50%;
+		margin: 0 auto;
+}
+
+.search-holder {
+		opacity: 0;
+		position: absolute;
+		left: calc(50% - 20px);
+		bottom: -20px;
+		background: #d6a37b;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		box-shadow: 0 4px 13px 2px #80808036;
+		transition: all 0.1s ease-in-out;
+		cursor: pointer;
+}
+
+
+.search-holder:hover {
+	bottom: -15px;
+	box-shadow: 0 8px 13px 2px #80808036;
+}
+
+.carousel-item.selected .search-holder {
+	opacity: 1;
+}
+
+.bottom {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	justify-content: flex-end;
+	/*padding-top: 3vw;*/
+	padding-left: 3vw;
+	padding-right: 3vw;
+	padding-bottom: 3vw;
+}
+
+.bottom h1 {
+	margin: 0 0;
+	font-size: 3em;
+}
+
+.bottom h2 {
+	font-size: 2.25em;
+	margin-block-start:0em;
+	margin-block-end:0em;
+}
+
+.profile-pic {
+	/*width: 50px;*/
+	height: 125px;
+	border-radius: 10px;
+}
+
+.sm-link {
+	width: 3em;
+	display: inline-block;
+	margin-right: 10px;
+	transition: fill 0.1s ease;
+}
+
+.sm-link.linkedin:hover path {
+	fill: #0077B5;
+}
+
+.sm-link.github:hover path {
+	fill: #6e5494;
+}
+
+#carousel-mobile {
+	display: none;
+	overflow-y: scroll;
+	-webkit-overflow-scrolling: touch;
+	height: 100vh;
+	margin-bottom: 150px;
+}
+
+.carousel-item-mob:last-child {
+	margin-bottom:150px;
+}
+
+.carousel-item-mob {
+	opacity: 1;
+	height: auto;
+	display: block;
+	margin: 20px auto 0;
+	padding: 10px 5px 40px;
+}
+
+/*Mobile styles*/
+@media only screen and (max-width: 768px) {
+
+	.container {
+		grid-template-rows: 2fr 0.5fr;
+	}
+	#carousel {
+		display: none;
+	}
+	#carousel-mobile {
+		display: initial;
+	}
+ .bottom {
+ 		position: absolute;
+ 		bottom:0;
+ 		left:0;
+ 		width:100%;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: center;
+			background-color: #ffffffeb;
+ }
+ .profile-pic {
+     display: none;
+ }
+ .search-holder:hover {
+ 	bottom: 0;
+ }
+}
