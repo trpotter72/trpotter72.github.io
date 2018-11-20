@@ -292,6 +292,9 @@ a:hover {
 			align-items: center;
 			background-color: #ffffffeb;
  }
+ .majors-bottom {
+	 display: none;
+ }
  .profile-pic {
      display: none;
  }
