@@ -198,6 +198,12 @@ a:hover {
 	padding-bottom: 3vw;
 }
 
+.carousel-item-mob h2,
+.carousel-item-mob h1,
+.carousel-item-mob h3 {
+	margin: 0 auto;
+}
+
 .bottom h1 {
 	margin: 0 0;
 	font-size: 3em;
