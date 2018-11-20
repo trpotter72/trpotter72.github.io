@@ -11,7 +11,8 @@ h4,
 h5,
 p,
 ul,
-li {
+li,
+a {
 		font-family: 'Quicksand', sans-serif;
 }
 
@@ -227,6 +228,21 @@ a:hover {
 
 .sm-link.github:hover path {
 	fill: #6e5494;
+}
+
+.sm-link.email:hover path {
+	fill: #555555;
+}
+
+#notify {
+	padding-left: 15px;
+	padding-right: 15px;
+	background: rgba(200, 200, 200, 0.75);
+	border-radius: 3px;
+	display: none;
+	position: absolute;
+	float: left;
+	z-index: 3;
 }
 
 #carousel-mobile {
