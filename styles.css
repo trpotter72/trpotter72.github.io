@@ -9,8 +9,20 @@ h2,
 h3,
 h4,
 h5,
-p {
+p,
+ul,
+li {
 		font-family: 'Quicksand', sans-serif;
+}
+
+ul {
+	list-style-type: none;
+	padding-left : 0px;
+	margin: 6px;
+}
+
+h3 {
+		margin: .5em 0em .1em 0em;
 }
 
 a,
@@ -95,6 +107,7 @@ a:hover {
 		transition: all 0.5s ease-out;
 		overflow: hidden;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		position: absolute;
