@@ -136,10 +136,12 @@ a:hover {
 	opacity: 1;
 }
 
-.carousel-item .left p {
-	max-width: 80%;
+.carousel-item .left p,
+.carousel-item .right p {
+	max-width: 90%;
 	white-space: normal;
 }
+
 
 .dev-icons {
 		font-size: 1.5em;
@@ -155,9 +157,9 @@ a:hover {
 }
 
 .project-img {
-		max-width: 70%;
+		max-width: 90%;
 		max-height: 50%;
-		margin: 25px auto;
+		margin: auto auto;
 }
 
 .search-holder {
