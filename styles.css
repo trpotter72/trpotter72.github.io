@@ -297,8 +297,8 @@ MOBILE STYLING
 	padding: 10px 5px 40px;
 }
 
-/*Mobile styles*/
-@media only screen and (max-width: 768px) {
+/*Switches to the mobile style if the aspect ration drops too far*/
+@media only screen and (max-aspect-ratio: 4/3) {
 
 	.container {
 		grid-template-rows: 2fr 0.5fr;

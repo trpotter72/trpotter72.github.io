@@ -21,28 +21,28 @@ for (let i = 0, length1 = items.length; i < length1; i++) {
 }
 
 function copyEmail(event){
-  var $temp = $("<input>");
-  $("body").append($temp);
-  $temp.val("trpotter72@ku.edu").select();
-  document.execCommand("copy");
-  $temp.remove();
-	$('#notify').css({
-		display: "block",
-		left:  event.pageX + 20,
-		top:   event.pageY
-	});
-	$(document).bind('mousemove', function(e){
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val("trpotter72@ku.edu").select();
+    document.execCommand("copy");
+    $temp.remove();
     $('#notify').css({
-			display: "block",
-			left:  e.pageX + 20,
-			top:   e.pageY
+    	display: "block",
+    	left:  event.pageX + 20,
+    	top:   event.pageY
     });
-	});
-	setTimeout(function(){
-		$('#notify').fadeOut(2500, function(){
-			$(document).unbind('mousemove');
-		});
-	}, 2000);
+    $(document).bind('mousemove', function(e){
+        $('#notify').css({
+    		display: "block",
+    		left:  e.pageX + 20,
+    		top:   e.pageY
+        });
+    });
+    setTimeout(function(){
+    	$('#notify').fadeOut(2500, function(){
+    		$(document).unbind('mousemove');
+    	});
+    }, 2000);
 }
 
 function scrollToCard(card, expandedIndex, clickedIndex) {
