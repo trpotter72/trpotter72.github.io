@@ -45,7 +45,7 @@ a:hover {
 		background-size: cover;
 		background-position-x: center;
 		grid-template-columns: 1fr;
-		grid-template-rows: 80vh 20vh;
+		grid-template-rows: auto 200px;
 }
 
 .header {
@@ -194,15 +194,15 @@ BOTTOM DIV STYLING
 */
 .bottom {
 	display: flex;
-	align-items: flex-start;
+	align-items: flex-end;
 	flex-direction: row;
 	justify-content: flex-start;
-    /*
-    padding-top: 3vw;
-	padding-left: 3vw;
-	padding-right: 3vw;
-	padding-bottom: 3vw;
-    */
+
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 30px;
+	padding-top: 30px;
+
 }
 .bottom h1 {
     margin: 0 0;
@@ -215,22 +215,22 @@ BOTTOM DIV STYLING
 }
 
 .profile-pic {
-    /*width: 50px;*/
     height: 150px;
     border-radius: 20px;
-    margin: 10px 20px 10px 50px;
+    margin-right: 2em;
 }
 
 .about-me {
-    padding: 2em 0;
+    margin-right: 2em;
 }
 
 .sm-links {
     width: 300px;
     display: flex;
     flex-direction: row;
-    margin: 5em 0 5em 2em;
+    flex-wrap: wrap;
     transition: fill 0.1s ease;
+    margin-right: 2em;
 }
 
 .sm-link {
@@ -286,7 +286,7 @@ MOBILE STYLING
 }
 
 .carousel-item-mob:last-child {
-	margin-bottom:150px;
+	margin-bottom:200px;
 }
 
 .carousel-item-mob {

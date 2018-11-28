@@ -1,6 +1,6 @@
 // Listen for card click, assign "expanded" class
 let items = document.getElementsByClassName('carousel-item');
-
+let expandedIndex;
 // loop over each item, add click listener
 for (let i = 0, length1 = items.length; i < length1; i++) {
 
