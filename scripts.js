@@ -1,3 +1,10 @@
+console.log(
+    "Thanks for visiting this site!  I hope you like what I've made.  If you have "
+    +"any questions for me please feel free to reach out.  I also want to give credit" 
+    +"to Chris Dermody @ https://github.com/Chippd/.  It's true that no idea is new, "
+    +"only a reframing of old ones."
+);
+
 // Listen for card click, assign "expanded" class
 let items = document.getElementsByClassName('carousel-item');
 let expandedIndex;
